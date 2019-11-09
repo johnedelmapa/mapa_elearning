@@ -1,7 +1,7 @@
 <div class="col-sm-6 mx-auto">
     <h1 class="text-center m-4">Sign up</h1>
 
-     <%= form_for :user, url: '#' do |f| %>
+     <%= form_for(@user) do |f| %>
         <div class="form-group">
             <%= f.label :name %>
             <%= f.text_field :name, class: 'form-control' %>
