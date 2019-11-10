@@ -1,2 +1,42 @@
-<h1><%= @user.name %></h1>
-<%= @user.email %>
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-lg-3">
+			<div class="card">
+				<div class="card-body text-center">
+                    <div class="container">
+                        <%= user_avatar(@user, 'profile-photo') %>
+                        <%= @user.name %>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <strong><%= link_to "#", "#" %></strong>
+                                <div>following</div>
+                            </div>
+                            <div class="col-lg-6">
+                                <strong><%= link_to "#", "#" %></strong>
+                                <div>followers</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <strong><%= link_to "#", "#" %></strong>
+                                <div>Words learned</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+		<div class="col-lg-9">
+			<div class="card">
+				<div class="card-header">
+                    <h6>Activity Feed</h6>
+				</div>
+				<div class="card-body">
+
+ 				</div>
+			</div>
+		</div>
+	</div>
+</div> 

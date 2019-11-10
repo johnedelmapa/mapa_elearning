@@ -1,1 +1,15 @@
 @import "bootstrap";
+
+.edit-profile-photo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+  
+   .profile-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+  }
