@@ -13,7 +13,15 @@
   <body>
     <%= render 'shared/navbar' %>
     <div class="container">
+      <% if flash.any? %>
+          <% flash.each do |type, msg| %>
+              <div class="alert alert-<%= type %> mt-2">
+                  <div><%= msg %></div>
+              </div>
+          <% end %>
+      <% end %>
       <%= yield %>
+      <%= debug session[:user_id] if Rails.env == 'development' %>
     </div>
     <%= render 'shared/footer' %>
   </body>
