@@ -9,7 +9,7 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-6">
-                                <strong><%= link_to "#", "#" %></strong>
+                                <strong><%= link_to "#" "#" %></strong>
                                 <div>following</div>
                             </div>
                             <div class="col-lg-6">
@@ -24,6 +24,12 @@
                                 <div>Words learned</div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="card-body text-center">
+                        <% if @user.admin? %>
+                            <%= link_to 'Administration', admin_home_path , class: "btn btn-dark btn-lg"%>
+                        <% end %>
                     </div>
                 </div>
 			</div>
