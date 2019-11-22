@@ -1,0 +1,50 @@
+<div class="text-center mb-3">
+    <div class="row">
+        <div class="col-10 mx-auto mt-5 text-center">
+            <h1>Categories</h1>
+            <br>
+            <% @categories.each do |category| %>
+                <div class="row mb-2 d-inline-block w-50">
+                    <% unless category.words.empty? %>                  
+                        <div class="col">
+                            <div class="row no-gutters border rounded mb-2">
+                                <div class="col p-4 d-flex flex-column position-static">
+                                    <div class="text-left">
+                                        <%= category.title %>
+                                        <%= category.words.count%>
+                                    </div>
+                                    <div class="text-left">
+                                        <%= category.description %>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="text-right">
+                                    <%#= hidden_field_tag @result =  %>
+                                        <%= form_for @lesson do |f| %>
+                                            <%= hidden_field_tag :category_id, category.id %>
+                                             <% lesson = @user.lesson_taken(category.id) %>
+                                            <% if lesson.nil? %>
+                                                <%= f.submit "Learn", class: "btn btn-outline-dark text-right"%>
+                                            <% else %>
+                                                <% if lesson.result.nil?%>
+                                                <%= link_to "Continue Lesson",new_lesson_answer_path(lesson) , class: "btn btn-info text-right"%>
+                                                <% else %>
+                                                <%= link_to "Result",lesson , class: "btn btn-outline-dark text-right"%>
+                                                <% end %>
+                                            <% end %>
+                                        <% end %> 
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>    
+    </div>
+
+    <div class="paginate text-center">
+        <%= will_paginate %> 
+    </div>
+    <%= link_to 'Back', admin_home_path, class: "back-btn" %>
+</div>

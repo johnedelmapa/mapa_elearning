@@ -1,0 +1,24 @@
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h1><%= @category.title %></h1>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="text-muted text-right"> <%= @lesson.words.count + 1 %> of <%= @category.words.count%></h3 >
+                </div>
+            </div>
+            <div class="jumbotron">
+                <h1 class="text-center"><strong><%= @lesson.next_word.content %></strong></h1>
+                <% @lesson.next_word.choices.each do |choice| %>
+                    <%= form_for([@lesson, @answer]) do |f| %>
+                        <%= f.hidden_field :word_id, value: choice.word_id %>
+                        <%= f.hidden_field :choice_id, value: choice.id %>
+                        <%= f.submit choice.content, class: 'btn btn-outline-dark btn-block mt-2' %>
+                    <% end %>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
