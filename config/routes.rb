@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'words/index'
-    get 'words/new'
-    get 'words/create'
-    get 'words/edit'
-    get 'words/update'
-    get 'words/destroy'
-  end
-  get 'sessions/new'
+  
   root 'staticpages#home'
   get '/about', to: 'staticpages#about'
   get '/signup', to: 'users#new'
@@ -23,6 +15,11 @@ Rails.application.routes.draw do
     resources :categories do
       resources :words
     end
+  end
+
+  resources :categories, only: [:index]
+  resources :lessons, only: [:create, :show] do 
+    resources :answers
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

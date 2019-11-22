@@ -20,3 +20,30 @@ User.create!(
         password: "password"
     )
 end
+
+25.times do |n|
+    title  = Faker::Lorem.word
+    des =  Faker::Lorem.word
+  
+    Category.create!(title:  title,
+                    description: des)
+  end
+  
+  
+  20.times do |n|
+    title = Faker::Name.unique.name
+    description =  "Lorem Epsum"
+    Category.create!(title: title,description: description)
+  
+    10.times do
+      content = Faker::Lorem.word
+      word = Category.all.sample.words.build content: content
+      word.choices = [
+        Choice.new(content: content, correct: true),
+        Choice.new(content: Faker::Music.instrument, correct: false),
+        Choice.new(content: Faker::Music.chord, correct: false)
+      ].shuffle
+      word.save(validate: false)
+    end
+  end
+  

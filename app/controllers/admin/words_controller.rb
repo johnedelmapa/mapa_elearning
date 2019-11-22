@@ -33,7 +33,7 @@ class Admin::WordsController < ApplicationController
 
   def update
     @category = Category.find(params[:category_id])
-    @word = @category.words.find(params[:id])
+    @word = Word.find(params[:id])
       if @word.update(word_params)
         redirect_to admin_category_words_url
       else
@@ -42,7 +42,8 @@ class Admin::WordsController < ApplicationController
   end
 
   def destroy
-    @word = Word.find(params[:id])
+    @category = Category.find(params[:category_id])
+    @word = @category.words.find(params[:id])
     @word.destroy
     redirect_to admin_category_words_url
   end
