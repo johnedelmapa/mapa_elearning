@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions, only: :create
+  resources :relationships
 
   namespace :admin do 
     get '/home', to:'users#home'
