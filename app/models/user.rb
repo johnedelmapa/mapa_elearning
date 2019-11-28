@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_many :lessons, dependent: :destroy
   has_many :activities, dependent: :destroy
   has_many :answers, through: :lessons
+  has_many :categories, through: :lessons
 
   def follow(user)
     following << user
