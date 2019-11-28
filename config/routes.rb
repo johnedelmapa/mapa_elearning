@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'words/index'
   root 'staticpages#home'
   get '/about', to: 'staticpages#about'
   get '/signup', to: 'users#new'
@@ -22,6 +23,8 @@ Rails.application.routes.draw do
   resources :lessons, only: [:create, :show] do 
     resources :answers
   end
+
+  resources :words, only: [:index]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
