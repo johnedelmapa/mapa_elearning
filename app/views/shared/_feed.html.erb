@@ -1,0 +1,50 @@
+<% if @feeds.any? %>
+    <% @feeds.each do |activity|%>
+        <% if activity.action_type == "Lesson" %>
+            <div class="container mt-2">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <% if activity.user == current_user %>
+                            <%= user_avatar(current_user, 'feed-avatar mr-3') %>
+                        <% else %>
+                            <%= user_avatar(activity.user, 'feed-avatar mr-3') %>
+                        <% end %>
+                    </div>
+                
+                    <div class="media-body align-self-center">
+                        <%= link_to_if activity.user == current_user, "You", user_path(current_user) do
+                            link_to activity.user.name, user_path(activity.user.id) end %> learned 
+                        <%= activity.action.lesson_results %> of 
+                        <%= activity.action.words.size %> in 
+                        <%= link_to activity.action.category.title, lesson_path(activity.action.id) %>
+                        <div>
+                            <small class="text-muted"><%= time_ago_in_words(activity.created_at) %></small>
+                        </div>                                    
+                    </div>
+                </div>
+            </div>
+        <% else %>
+            <div class="container mt-2">
+                <div class="media">
+                    <div class="media-left media-middle">
+                        <% if activity.user == current_user %>
+                            <%= user_avatar(current_user, 'feed-avatar mr-3') %>
+                        <% else %>
+                            <%= user_avatar(activity.user, 'feed-avatar mr-3') %>
+                        <% end %>
+                    </div>
+                    <div class="media-body align-self-center">
+                        <%= link_to_if activity.user == current_user, "You", user_path(current_user) do
+                            link_to activity.user.name, user_path(activity.user.id) end %> followed 
+                        <%= link_to activity.action.followed.name, activity.action.followed %>
+                        <div>
+                            <small class="text-muted"><%= time_ago_in_words(activity.created_at) %></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% end %>	
+    <% end %>
+<% else %>
+    <h3 class="text-muted text-center"> Nothing to show</h3>
+<% end %>

@@ -72,4 +72,5 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'will_paginate-bootstrap4'
 # For seeding data
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+gem 'data-confirm-modal'
 

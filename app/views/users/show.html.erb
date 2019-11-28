@@ -9,18 +9,18 @@
                         <hr>
                         <div class="row">
                             <div class="col-lg-6">
-                                <strong><%= link_to @user.following.count, "#" %></strong>
+                                <strong><%= @user.following.count %></strong>
                                 <div>following</div>
                             </div>
                             <div class="col-lg-6">
-                                <strong><%= link_to @user.followers.count, "#" %></strong>
+                                <strong><%= @user.followers.count %></strong>
                                 <div>followers</div>
                             </div>
                         </div>
                         <hr>
                         <div class="row">
                             <div class="col-lg-12">
-                                <strong><%= link_to "#", "#" %></strong>
+                               <strong><%= link_to @user.answers.count %></strong>
                                 <div>Words learned</div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                     <h6>Activity Feed</h6>
 				</div>
 				<div class="card-body">
-
+                       <%= render 'shared/feed'%>
  				</div>
 			</div>
 		</div>
